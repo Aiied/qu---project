@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a744c7990aa7a47918e0b5ea3521a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingButton
-  settingView: {fileID: 876335884}
+  panel: {fileID: 0}
 --- !u!1 &177283453
 GameObject:
   m_ObjectHideFlags: 0
