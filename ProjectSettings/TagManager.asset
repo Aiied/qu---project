@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - coin
+  - ClearPanel
+  - GameOverPanel
   layers:
   - Default
   - TransparentFX
