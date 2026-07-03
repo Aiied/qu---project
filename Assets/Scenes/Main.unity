@@ -980,6 +980,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapDataManager
   defaultStageIds:
   - stage01
+  - stage02
+  - stage03
+  - stage04
+  - stage05
+  - stage06
+  - stage07
+  - stage08
+  - stage09
 --- !u!1 &442271772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff5974e29596d542a69729525b5d026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectButton
-  stageName: 
+  stageId: stage01
 --- !u!1 &2047372029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,8 +2008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44bf513c359b7c4f97f0549e68aee5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarManager
-  stages:
-  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

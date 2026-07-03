@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2943145170336535993}
   - component: {fileID: 433780811067197458}
   - component: {fileID: 1949160361225043136}
+  - component: {fileID: 8038751853880566528}
   m_Layer: 0
   m_Name: coin
-  m_TagString: coin
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8038751853880566528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171345189905307236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a375e9827f87cb418b8fefc70a88c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Star
+  starId: 0

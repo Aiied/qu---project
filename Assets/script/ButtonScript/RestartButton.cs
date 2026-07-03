@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RestartButton : MonoBehaviour
 {
+    public string stageId;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void reloadScene()
     {
@@ -13,6 +14,6 @@ public class RestartButton : MonoBehaviour
         {
             target.SetActive(false);
         }
-        SceneManager.LoadScene("stage1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

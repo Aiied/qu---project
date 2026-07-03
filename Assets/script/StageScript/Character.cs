@@ -14,31 +14,37 @@ public class Character : MonoBehaviour
     public int characterSize;
 
     public GameManager gameManager;
+    public GameObject characterPrefabs;
 
     public bool canMove = true;
 
     bool isMoving = false;
 
-    int gridX = 0;
-    int gridY = 0;
-    int gridZ = 0;
+    public int gridX;
+    public int gridY;
+    public int gridZ;
 
     public float moveSpeed;
 
-    Vector3 touchStart;
-    Vector3 touchEnd;
+    Vector2 touchStart;
+    Vector2 touchEnd;
 
-    Vector3 findMovePosition(int[] moveInfor)
+    Vector3 findMovePosition(int[] moveInfor, bool isPreFab)
     {
         int count = 0;
         int dx = moveInfor[0];
         int dy = moveInfor[1];
         int dz = moveInfor[2];
+
+        int curX = gridX;
+        int curY = gridY;
+        int curZ = gridZ;
+
         while (true)
         {
-            int nextX = gridX + dx;
-            int nextY = gridY + dy;
-            int nextZ = gridZ + dz;
+            int nextX = curX + dx;
+            int nextY = curY + dy;
+            int nextZ = curZ + dz;
             if (nextX < 0 || nextX >= map.mapXSize
             || nextY < 0 || nextY >= map.mapYSize
             || nextZ < 0 || nextZ >= map.mapZSize)
@@ -50,8 +56,12 @@ public class Character : MonoBehaviour
             {
                 break;
             }
-            gridX = nextX; gridY = nextY; gridZ = nextZ;
+            curX = nextX; curY = nextY; curZ = nextZ;
             count++;
+        }
+        if (!isPreFab)
+        {
+            gridX = curX; gridY = curY; gridZ = curZ;
         }
         return new Vector3(
             transform.position.x + (count * dx * characterSize),
@@ -59,6 +69,7 @@ public class Character : MonoBehaviour
             transform.position.z + (count * dz * characterSize)
             );
     }
+
     public void CharacterMove(int[] moveInfor)
     {
         if (isMoving)
@@ -66,7 +77,7 @@ public class Character : MonoBehaviour
             return;
         }
 
-        Vector3 targetPos = findMovePosition(moveInfor);
+        Vector3 targetPos = findMovePosition(moveInfor, false);
 
         if (transform.position == targetPos)
         {
@@ -74,7 +85,7 @@ public class Character : MonoBehaviour
         }
         gameManager.moveCount++;
         StartCoroutine(SmoothMove(targetPos));
-        
+
     }
 
     IEnumerator SmoothMove(Vector3 target)
@@ -91,20 +102,19 @@ public class Character : MonoBehaviour
         isMoving = false;
         canMove = true;
         gameManager.changeCountUi();
-        if(transform.position == gameManager.endPosition)
+        if (transform.position == gameManager.endPosition)
         {
             gameManager.Clear();
         }
-        if(gameManager.moveCount >= gameManager.moveCount_Max)
+        if (gameManager.moveCount >= gameManager.moveCount_Max)
         {
             gameManager.GameOver();
         }
     }
 
-    private void CalVector(Vector2 end_start)
+    private int[] CalVector(Vector2 end_start)
     {
         float acTan = Mathf.Atan2(end_start.y, end_start.x) * Mathf.Rad2Deg;
-        Debug.Log(acTan);
         int[] returnArr = new int[3] { 0, 0, 0 };
         if (acTan > 0 && acTan <= 60)
         {
@@ -130,39 +140,72 @@ public class Character : MonoBehaviour
         {
             returnArr[2] = -1;
         }
-        CharacterMove(returnArr);
+        return returnArr;
 
     }
     void Update()
     {
-        if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0)) && canMove)
+        if (!canMove) return;
+
+        bool began = false;
+        bool hold = false;
+        bool ended = false;
+        Vector2 position = Vector2.zero;
+
+        if (Input.touchCount > 0)
         {
-            if (Input.touchCount > 0)
+            Touch touch = Input.GetTouch(0);
+            position = touch.position;
+
+            began = touch.phase == TouchPhase.Began;
+            hold = touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;
+            ended = touch.phase == TouchPhase.Ended;
+        }
+        else
+        {
+            position = Input.mousePosition;
+
+            began = Input.GetMouseButtonDown(0);
+            hold = Input.GetMouseButton(0);
+            ended = Input.GetMouseButtonUp(0);
+        }
+
+        if (began)
+            touchStart = position;
+
+        if (hold)
+        {
+            float distance = Vector2.Distance(touchStart, position);
+            Debug.Log(distance);
+            if (distance > 100f)
             {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began) touchStart = touch.position;
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    touchEnd = touch.position;
-                    CalVector(touchEnd - touchStart);
-                }
+                characterPrefabs.transform.position =
+                    findMovePosition(CalVector(position - touchStart), true);
+                characterPrefabs.SetActive(true);
             }
-            else if (Input.GetMouseButtonDown(0))
+            else
             {
-                touchStart = Input.mousePosition;
+                characterPrefabs.SetActive(false);
             }
-            else if (Input.GetMouseButtonUp(0))
+        }
+
+        if (ended)
+        {
+            float distance = Vector2.Distance(touchStart, position);
+            if (distance > 100f)
             {
-                touchEnd = Input.mousePosition;
-                CalVector(touchEnd - touchStart);
+                touchEnd = position;
+                CharacterMove(CalVector(touchEnd - touchStart));
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("coin"))
+        if (other.CompareTag("Star"))
         {
+            Star star = other.GetComponent<Star>();
+            gameManager.changeStar(star.getStarId());
             Destroy(other.gameObject);
         }
     }

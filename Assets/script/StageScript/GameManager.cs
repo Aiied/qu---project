@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 
     public int moveCount_Max;
 
-    public bool[] stars;
+    private bool[] stars;
 
     public int sGrade;
     public int aGrade;
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        stars = new bool[3]{false, false, false};
         moveCount = 0;
         countController.ChangeCountTMP(moveCount, moveCount_Max);
         countController.ChangeGradeTMP(sGrade,aGrade,bGrade);
@@ -54,5 +55,9 @@ public class GameManager : MonoBehaviour
     public void changeCountUi()
     {
         countController.ChangeCountTMP(moveCount, moveCount_Max);
+    }
+    public void changeStar(int starId)
+    {
+        stars[starId] = true;
     }
 }
