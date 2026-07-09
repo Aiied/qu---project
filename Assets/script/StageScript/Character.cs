@@ -150,28 +150,33 @@ public class Character : MonoBehaviour
         bool began = false;
         bool hold = false;
         bool ended = false;
-        Vector2 position = Vector2.zero;
 
+        Vector2 position = Vector2.zero;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             position = touch.position;
-
-            began = touch.phase == TouchPhase.Began;
-            hold = touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;
-            ended = touch.phase == TouchPhase.Ended;
+            if (position.y > 500)
+            {
+                began = touch.phase == TouchPhase.Began;
+                hold = touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;
+                ended = touch.phase == TouchPhase.Ended;
+            }
         }
         else
         {
             position = Input.mousePosition;
-
-            began = Input.GetMouseButtonDown(0);
-            hold = Input.GetMouseButton(0);
-            ended = Input.GetMouseButtonUp(0);
+            if (position.y > 400)
+            {
+                began = Input.GetMouseButtonDown(0);
+                hold = Input.GetMouseButton(0);
+                ended = Input.GetMouseButtonUp(0);
+            }
         }
 
         if (began)
             touchStart = position;
+        Debug.Log(touchStart);
 
         if (hold)
         {
@@ -179,9 +184,6 @@ public class Character : MonoBehaviour
             Debug.Log(distance);
             if (distance > 100f)
             {
-                characterPrefabs.transform.position =
-                    findMovePosition(CalVector(position - touchStart), true);
-                characterPrefabs.SetActive(true);
             }
             else
             {
