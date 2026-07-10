@@ -113,36 +113,52 @@ public class Character : MonoBehaviour
     }
 
     private int[] CalVector(Vector2 end_start)
-    {
-        float acTan = Mathf.Atan2(end_start.y, end_start.x) * Mathf.Rad2Deg;
-        int[] returnArr = new int[3] { 0, 0, 0 };
-        if (acTan > 0 && acTan <= 60)
-        {
-            returnArr[0] = 1;
-        }
-        else if (acTan > 60 && acTan <= 120)
-        {
-            returnArr[1] = 1;
-        }
-        else if (acTan > 120 && acTan <= 180)
-        {
-            returnArr[2] = 1;
-        }
-        else if (acTan > (-180) && acTan <= (-120))
-        {
-            returnArr[0] = -1;
-        }
-        else if (acTan > (-120) && acTan <= (-60))
-        {
-            returnArr[1] = -1;
-        }
-        else if (acTan > (-60) && acTan <= 0)
-        {
-            returnArr[2] = -1;
-        }
-        return returnArr;
+{
+    float angle = Mathf.Atan2(end_start.y, end_start.x) * Mathf.Rad2Deg;
 
+    int[] returnArr = new int[3];
+    float[][] rangeData = AngleData.GetRangeData();
+
+    for (int i = 0; i < 6; i++)
+    {
+        float start = rangeData[i][0];
+        float end = rangeData[i][1];
+
+        if (start == 0 && end == 0)
+            continue;
+
+        if (start > 180) start -= 360;
+        if (end > 180) end -= 360;
+
+        bool inRange;
+
+        if (start <= end)
+        {
+            inRange = angle >= start && angle < end;
+        }
+        else
+        {
+            inRange = angle >= start || angle < end;
+        }
+
+        if (!inRange)
+            continue;
+
+        switch (i)
+        {
+            case 0: returnArr[0] = 1; break;   // +X
+            case 1: returnArr[0] = -1; break;  // -X
+            case 2: returnArr[1] = 1; break;   // +Y
+            case 3: returnArr[1] = -1; break;  // -Y
+            case 4: returnArr[2] = 1; break;   // +Z
+            case 5: returnArr[2] = -1; break;  // -Z
+        }
+
+        break;
     }
+
+    return returnArr;
+}
     void Update()
     {
         if (!canMove) return;
@@ -176,12 +192,10 @@ public class Character : MonoBehaviour
 
         if (began)
             touchStart = position;
-        Debug.Log(touchStart);
 
         if (hold)
         {
             float distance = Vector2.Distance(touchStart, position);
-            Debug.Log(distance);
             if (distance > 100f)
             {
             }

@@ -17,6 +17,7 @@ public class Map : MonoBehaviour
 
     public GridManager obstacleData;
     public GridManager starData;
+    public GridManager trapData;
     public string stageId;
 
     public SpawnManager spawnManager;
@@ -44,6 +45,10 @@ public class Map : MonoBehaviour
                     }
                 }
             }
+        }
+        foreach(RowData row in trapData.rows)
+        {
+            mapData[row.columns[0] + row.columns[1]*mapXSize + row.columns[2]*mapXSize*mapYSize] = false;
         }
         mapData[endPoint[0] + mapXSize*endPoint[1] + mapXSize*mapYSize*endPoint[2]] = false;
 

@@ -18,7 +18,6 @@ public class SpawnManager : MonoBehaviour
             row.columns[0] * characterSize + x_CalibrationValue,
             row.columns[1] * characterSize + y_CalibrationValue - characterSize,
             row.columns[2] * characterSize + z_CalibrationValue);
-        Debug.Log(spawnPos);
         Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
     }
 
