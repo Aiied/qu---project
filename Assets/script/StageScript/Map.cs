@@ -55,11 +55,7 @@ public class Map : MonoBehaviour
 
         for(int i = 0; i<3; i++)
         {
-            if(record.star[i] == true)
-            {
-                spawnManager.spawnEmptyStar(starData.rows[i], i);
-            }
-            else
+            if(record.star[i] == false)
             {
                 spawnManager.spawnStar(starData.rows[i], i);
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obstaclePrefab;
-    public GameObject[] starPrefabs;
+    public GameObject starPrefab;
     int characterSize = 2;
     public int x_CalibrationValue;
     public int y_CalibrationValue;
@@ -25,21 +25,21 @@ public class SpawnManager : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(
             row.columns[0] * characterSize + x_CalibrationValue,
-            row.columns[1] * characterSize + y_CalibrationValue - characterSize, 
+            row.columns[1] * characterSize + y_CalibrationValue - characterSize,
             row.columns[2] * characterSize + z_CalibrationValue);
-        GameObject new_star = Instantiate(starPrefabs[0], spawnPos, Quaternion.identity);
-        Star script = new_star.GetComponent<Star>();
-        script.changeStarId(starId);
-    }
 
-    internal void spawnEmptyStar(RowData row, int starId)
-    {
-        Vector3 spawnPos = new Vector3(
-            row.columns[0] * characterSize + x_CalibrationValue,
-            row.columns[1] * characterSize + y_CalibrationValue - characterSize ,
-            row.columns[2] * characterSize + z_CalibrationValue);
-        GameObject new_star = Instantiate(starPrefabs[1], spawnPos, Quaternion.identity);
+        Debug.Log("Instantiate 전");
+
+        GameObject new_star = Instantiate(starPrefab, spawnPos, Quaternion.identity);
+
+        Debug.Log("Instantiate 후");
+
         Star script = new_star.GetComponent<Star>();
+
+        Debug.Log(script);
+
         script.changeStarId(starId);
+
+        Debug.Log("changeStarId 완료");
     }
 }
