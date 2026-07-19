@@ -1,7 +1,6 @@
 
 using System.Collections;
 using Unity.Collections;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
@@ -175,7 +174,7 @@ public class Character : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             position = touch.position;
-            if (position.y > 500)
+            if (position.y > 400)
             {
                 began = touch.phase == TouchPhase.Began;
                 hold = touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;

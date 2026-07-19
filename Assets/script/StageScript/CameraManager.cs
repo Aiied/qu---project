@@ -48,7 +48,6 @@ public class CameraManager : MonoBehaviour
             dLight.SetActive(true);
         }
         transform.position = position[camNum];
-        Debug.Log(camNum);
         transform.rotation = Quaternion.Euler(rotation[camNum]);
         AngleData.UpdateAngle(camNum,position_x,position_y);
     }
@@ -64,7 +63,7 @@ public class CameraManager : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             position = touch.position;
-            if (position.y < 500)
+            if (position.y < 400)
             {
                 began = touch.phase == TouchPhase.Began;
                 ended = touch.phase == TouchPhase.Ended;
@@ -73,7 +72,7 @@ public class CameraManager : MonoBehaviour
         else
         {
             position = Input.mousePosition;
-            if (position.y < 500)
+            if (position.y < 400)
             {
                 began = Input.GetMouseButtonDown(0);
                 ended = Input.GetMouseButtonUp(0);

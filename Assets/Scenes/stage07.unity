@@ -1022,9 +1022,9 @@ MonoBehaviour:
   - {x: 6, y: 20, z: 6}
   - {x: 6, y: 20, z: 6}
   rotation:
-  - {x: 10, y: 90, z: 0}
+  - {x: 0, y: 90, z: 0}
   - {x: 10, y: 45, z: 0}
-  - {x: 10, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 90, y: 90, z: 0}
   - {x: 90, y: 45, z: 0}
   - {x: 90, y: 0, z: 0}
@@ -1892,7 +1892,7 @@ GameObject:
   - component: {fileID: 761865712}
   - component: {fileID: 761865711}
   - component: {fileID: 761865710}
-  - component: {fileID: 761865709}
+  - component: {fileID: 761865713}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1919,19 +1919,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -500}
   m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &761865709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761865707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RestartButton
-  stageId: Main
 --- !u!114 &761865710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1976,7 +1963,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
+      - m_Target: {fileID: 761865707}
         m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
         m_MethodName: 
         m_Mode: 1
@@ -2026,6 +2013,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761865707}
   m_CullTransparentMesh: 1
+--- !u!114 &761865713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761865707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761909449039dbd489d57f49c2c97ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveToMainButton
 --- !u!1 &815427112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,9 +3188,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
-        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
-        m_MethodName: 
+      - m_Target: {fileID: 1111136581}
+        m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
+        m_MethodName: reloadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
