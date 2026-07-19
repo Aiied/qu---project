@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public GameObject dLight;
     public Vector3[] position = new Vector3[6];
     public Vector3[] rotation = new Vector3[6];
+    
     Vector2 touchStart;
     Vector2 touchEnd;
     
@@ -37,6 +39,14 @@ public class CameraManager : MonoBehaviour
             position_y += positionIncrease[0];
         }
         int camNum = position_x + position_y*3;
+        if(camNum > 2)
+        {
+            dLight.SetActive(false);
+        }
+        else if(camNum <= 2)
+        {
+            dLight.SetActive(true);
+        }
         transform.position = position[camNum];
         Debug.Log(camNum);
         transform.rotation = Quaternion.Euler(rotation[camNum]);

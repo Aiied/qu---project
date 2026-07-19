@@ -102,6 +102,7 @@ public class Character : MonoBehaviour
         isMoving = false;
         canMove = true;
         gameManager.changeCountUi();
+        gameManager.IsTappred(transform.position);
         if (transform.position == gameManager.endPosition)
         {
             gameManager.Clear();
@@ -110,6 +111,8 @@ public class Character : MonoBehaviour
         {
             gameManager.GameOver();
         }
+        
+        
     }
 
     private int[] CalVector(Vector2 end_start)

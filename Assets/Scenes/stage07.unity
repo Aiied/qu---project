@@ -2075,8 +2075,8 @@ MonoBehaviour:
   sGrade: 3
   aGrade: 4
   bGrade: 5
-  stageName: stage01
-  endPosition: {x: 11, y: 1, z: 13}
+  stageName: stage07
+  endPosition: {x: 13, y: 7, z: 5}
   trap: []
   pausePanel: {fileID: 0}
   clearPanel: {fileID: 325251522}
@@ -2184,7 +2184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestartButton
-  stageId: stage02
+  stageId: stage07
 --- !u!114 &844371237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff5974e29596d542a69729525b5d026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectButton
-  stageId: stage01
+  stageId: stage07
 --- !u!114 &901196971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +3144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestartButton
-  stageId: stage01
+  stageId: stage07
 --- !u!114 &1111136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,7 +3387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff5974e29596d542a69729525b5d026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectButton
-  stageId: stage02
+  stageId: stage08
 --- !u!114 &1240731910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,20 +3751,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668e96fef698204e8726c1284704099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Map
-  endPoint: 050000000100000006000000
+  endPoint: 060000000400000002000000
   mapData: 
   obstacleData:
     rows:
     - columns: 000000000100000004000000
-    - columns: 050000000100000001000000
+    - columns: 020000000100000000000000
+    - columns: 030000000100000003000000
+    - columns: 020000000300000003000000
+    - columns: 050000000400000003000000
+    - columns: 020000000500000001000000
   starData:
     rows:
-    - columns: 020000000100000003000000
-    - columns: 000000000100000000000000
-    - columns: 050000000100000004000000
+    - columns: 020000000100000005000000
+    - columns: 020000000200000003000000
+    - columns: 050000000400000001000000
   trapData:
-    rows: []
-  stageId: stage01
+    rows:
+    - columns: 020000000100000006000000
+  stageId: stage07
   spawnManager: {fileID: 1838009305}
 --- !u!1 &1424100018
 GameObject:

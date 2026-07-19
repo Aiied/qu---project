@@ -1539,7 +1539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb4b399dcaefd8242a1bce45498713af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb4b399dcaefd8242a1bce45498713af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1547,7 +1547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb4b399dcaefd8242a1bce45498713af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb4b399dcaefd8242a1bce45498713af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2075,8 +2075,8 @@ MonoBehaviour:
   sGrade: 3
   aGrade: 4
   bGrade: 5
-  stageName: stage01
-  endPosition: {x: 11, y: 1, z: 13}
+  stageName: stage05
+  endPosition: {x: 5, y: 1, z: 13}
   trap: []
   pausePanel: {fileID: 0}
   clearPanel: {fileID: 325251522}
@@ -2184,7 +2184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestartButton
-  stageId: stage02
+  stageId: stage05
 --- !u!114 &844371237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff5974e29596d542a69729525b5d026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectButton
-  stageId: stage01
+  stageId: stage05
 --- !u!114 &901196971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +3144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f42cc047a0bab40912036167d4c35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestartButton
-  stageId: stage01
+  stageId: stage05
 --- !u!114 &1111136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,7 +3387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff5974e29596d542a69729525b5d026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectButton
-  stageId: stage02
+  stageId: stage01
 --- !u!114 &1240731910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,20 +3751,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668e96fef698204e8726c1284704099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Map
-  endPoint: 050000000100000006000000
+  endPoint: 020000000100000005000000
   mapData: 
   obstacleData:
     rows:
-    - columns: 000000000100000004000000
-    - columns: 050000000100000001000000
+    - columns: 010000000100000001000000
+    - columns: 010000000100000005000000
+    - columns: 030000000100000000000000
   starData:
     rows:
-    - columns: 020000000100000003000000
     - columns: 000000000100000000000000
-    - columns: 050000000100000004000000
+    - columns: 040000000100000005000000
+    - columns: 050000000100000005000000
   trapData:
-    rows: []
-  stageId: stage01
+    rows:
+    - columns: 040000000100000006000000
+    - columns: 050000000100000006000000
+  stageId: stage05
   spawnManager: {fileID: 1838009305}
 --- !u!1 &1424100018
 GameObject:
@@ -4129,9 +4132,9 @@ MonoBehaviour:
   gameManager: {fileID: 815427115}
   characterPrefabs: {fileID: 919132149155446097, guid: cb4b399dcaefd8242a1bce45498713af, type: 3}
   canMove: 1
-  gridX: 0
+  gridX: 5
   gridY: 1
-  gridZ: 3
+  gridZ: 2
   moveSpeed: 10
 --- !u!54 &1573626108
 Rigidbody:

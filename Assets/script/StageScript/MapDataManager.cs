@@ -13,7 +13,7 @@ public class MapData
     public bool isCleared;
     public bool[] star;
     public int Best;
-
+    public string rank;
 }
 
 [Serializable]
@@ -45,7 +45,6 @@ public class MapDataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         savePath = Path.Combine(Application.persistentDataPath, "stage_records.json");
-        Debug.Log(savePath);
         Load();
     }
 
@@ -72,7 +71,7 @@ public class MapDataManager : MonoBehaviour
 
     }
 
-    public void UpdateClearResult(string stageId, bool[] star, int time)
+    public void UpdateClearResult(string stageId, bool[] star, int time, string rank)
     {
         MapData record = GetRecord(stageId);
         if (record == null)
@@ -81,7 +80,12 @@ public class MapDataManager : MonoBehaviour
         }
 
         record.isCleared = true;
+        if(record.Best >= time)
+        {
+            record.rank = rank;
+        }
         record.Best = Mathf.Min(record.Best, time);
+        
 
         if (star != null)
         {
@@ -94,7 +98,6 @@ public class MapDataManager : MonoBehaviour
                 }
             }
         }
-
         Save();
     }
 
@@ -182,7 +185,8 @@ public class MapDataManager : MonoBehaviour
             stageId = stageId,
             isCleared = false,
             Best = 9999,
-            star = new bool[3] { false, false, false }
+            star = new bool[3] { false, false, false },
+            rank = "F"
         };
     }
 
