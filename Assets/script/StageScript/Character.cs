@@ -174,7 +174,7 @@ public class Character : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             position = touch.position;
-            if (position.y > 400)
+            if (position.y > 500)
             {
                 began = touch.phase == TouchPhase.Began;
                 hold = touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;
@@ -184,7 +184,7 @@ public class Character : MonoBehaviour
         else
         {
             position = Input.mousePosition;
-            if (position.y > 400)
+            if (position.y > 500)
             {
                 began = Input.GetMouseButtonDown(0);
                 hold = Input.GetMouseButton(0);
@@ -210,7 +210,7 @@ public class Character : MonoBehaviour
         if (ended)
         {
             float distance = Vector2.Distance(touchStart, position);
-            if (distance > 100f)
+            if (distance > 50f)
             {
                 touchEnd = position;
                 CharacterMove(CalVector(touchEnd - touchStart));

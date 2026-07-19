@@ -2076,7 +2076,9 @@ MonoBehaviour:
   bGrade: 5
   stageName: stage05
   endPosition: {x: 5, y: 1, z: 13}
-  trap: []
+  trap:
+  - {x: 9, y: 1, z: 13}
+  - {x: 11, y: 1, z: 13}
   pausePanel: {fileID: 0}
   clearPanel: {fileID: 325251522}
   FinalGrade: {fileID: 971117504}
@@ -3750,7 +3752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668e96fef698204e8726c1284704099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Map
-  endPoint: 020000000100000005000000
+  endPoint: 020000000100000006000000
   mapData: 
   obstacleData:
     rows:

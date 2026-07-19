@@ -63,7 +63,7 @@ public class CameraManager : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             position = touch.position;
-            if (position.y < 400)
+            if (position.y < 500)
             {
                 began = touch.phase == TouchPhase.Began;
                 ended = touch.phase == TouchPhase.Ended;
@@ -72,7 +72,7 @@ public class CameraManager : MonoBehaviour
         else
         {
             position = Input.mousePosition;
-            if (position.y < 400)
+            if (position.y < 500)
             {
                 began = Input.GetMouseButtonDown(0);
                 ended = Input.GetMouseButtonUp(0);
@@ -85,7 +85,7 @@ public class CameraManager : MonoBehaviour
         if (ended)
         {
             float distance = Vector2.Distance(touchStart, position);
-            if (distance > 100f)
+            if (distance > 50f)
             {
                 touchEnd = position;
                 ChangeCamPosition(CalVector(touchEnd - touchStart));

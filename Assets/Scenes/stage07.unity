@@ -2076,7 +2076,8 @@ MonoBehaviour:
   bGrade: 5
   stageName: stage07
   endPosition: {x: 13, y: 7, z: 5}
-  trap: []
+  trap:
+  - {x: 5, y: 1, z: 13}
   pausePanel: {fileID: 0}
   clearPanel: {fileID: 325251522}
   FinalGrade: {fileID: 971117504}

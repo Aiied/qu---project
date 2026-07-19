@@ -2076,7 +2076,11 @@ MonoBehaviour:
   bGrade: 5
   stageName: stage09
   endPosition: {x: 7, y: 7, z: 13}
-  trap: []
+  trap:
+  - {x: 11, y: 1, z: 5}
+  - {x: 11, y: 3, z: 9}
+  - {x: 11, y: 11, z: 1}
+  - {x: 11, y: 0, z: 11}
   pausePanel: {fileID: 0}
   clearPanel: {fileID: 325251522}
   FinalGrade: {fileID: 971117504}
@@ -3754,8 +3758,16 @@ MonoBehaviour:
   mapData: 
   obstacleData:
     rows:
-    - columns: 000000000100000004000000
-    - columns: 050000000100000001000000
+    - columns: 010000000100000003000000
+    - columns: 020000000100000000000000
+    - columns: 050000000100000000000000
+    - columns: 050000000200000002000000
+    - columns: 010000000300000002000000
+    - columns: 050000000300000005000000
+    - columns: 020000000400000005000000
+    - columns: 050000000500000002000000
+    - columns: 050000000600000001000000
+    - columns: 050000000600000003000000
   starData:
     rows:
     - columns: 050000000100000002000000
