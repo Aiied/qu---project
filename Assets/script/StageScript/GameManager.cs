@@ -18,10 +18,10 @@ public class GameManager : MonoBehaviour
     public Vector3 endPosition;
     public Vector3[] trap;
 
-    public GameObject pausePanel;
     public GameObject clearPanel;
     public GameObject FinalGrade;
     public GameObject gameOverPanel;
+
     public Character character;
     public CountController countController;
 
@@ -34,14 +34,6 @@ public class GameManager : MonoBehaviour
         countController.ChangeGradeTMP(sGrade, aGrade, bGrade);
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            character.canMove = false;
-            pausePanel.SetActive(true);
-        }
-    }
     public void IsTappred(Vector3 position)
     {
         foreach (Vector3 p in trap)
@@ -59,48 +51,42 @@ public class GameManager : MonoBehaviour
 
         clearPanel.SetActive(true);
         string rank = "F";
-        if(moveCount <= sGrade)
+        if (moveCount <= sGrade)
         {
             rank = "S";
         }
-        else if(moveCount <= aGrade)
+        else if (moveCount <= aGrade)
         {
             rank = "A";
         }
-        else if(moveCount <= bGrade)
+        else if (moveCount <= bGrade)
         {
             rank = "B";
         }
         MapDataManager.Instance.UpdateClearResult(stageName, stars, moveCount, rank);
         MapData record = MapDataManager.Instance.GetRecord(stageName);
-        if (record.Best > sGrade)
-        {
-            FinalGrade.transform.Find("S").gameObject.SetActive(false);
-        }
-        if (record.Best > aGrade)
-        {
-            FinalGrade.transform.Find("A").gameObject.SetActive(false);
-        }
-        if (record.Best > bGrade)
-        {
-            FinalGrade.transform.Find("B").gameObject.SetActive(false);
-        }
+        if (rank != "F")
+            FinalGrade.transform.Find(rank).gameObject.SetActive(true);
         int count = 0;
         foreach (bool star in record.star)
         {
             if (star) count++;
         }
-        if (count < 3)
+        if (count == 3)
         {
-            FinalGrade.transform.Find("Star3").gameObject.SetActive(false);
+            FinalGrade.transform.Find("Star3").gameObject.SetActive(true);
         }
-        if (count < 2)
+        else if (count == 2)
         {
-            FinalGrade.transform.Find("Star2").gameObject.SetActive(false);
+            FinalGrade.transform.Find("Star2").gameObject.SetActive(true);
         }
-        if (count < 1)
+        else if (count == 1)
         {
-            FinalGrade.transform.Find("Star1").gameObject.SetActive(false);
+            FinalGrade.transform.Find("Star1").gameObject.SetActive(true);
+        }
+        else
+        {
+            FinalGrade.transform.Find("Star0").gameObject.SetActive(true);
         }
 
     }

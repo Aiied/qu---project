@@ -811,7 +811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &138335189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1139,8 +1139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682048f53ad2fec48b9268b7ff423aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountController
-  countTMP: {fileID: 0}
-  gradeTMP: {fileID: 0}
+  countTMP: {fileID: 781050226}
+  gradeTMP: {fileID: 1435499841}
 --- !u!1 &275452399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,13 +1433,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08052145, y: 0.3812272, z: -0.033353075, w: 0.9203639}
-  m_LocalPosition: {x: -3, y: 5, z: -3}
+  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
+  m_LocalPosition: {x: -3, y: 9, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 10, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1499,14 +1499,14 @@ MonoBehaviour:
   dLight: {fileID: 293015113}
   position:
   - {x: -3, y: 5, z: 6}
-  - {x: -3, y: 5, z: -3}
+  - {x: -3, y: 9, z: -3}
   - {x: 6, y: 5, z: -3}
   - {x: 6, y: 20, z: 6}
-  - {x: 6, y: 20, z: 6}
+  - {x: 5, y: 20, z: 5}
   - {x: 6, y: 20, z: 6}
   rotation:
   - {x: 0, y: 90, z: 0}
-  - {x: 10, y: 45, z: 0}
+  - {x: 30, y: 45, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 90, y: 90, z: 0}
   - {x: 90, y: 45, z: 0}
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff5974e29596d542a69729525b5d026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectButton
-  stageId: stage02
+  stageId: stage06
 --- !u!114 &394818356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,7 +2134,7 @@ Transform:
   m_GameObject: {fileID: 509565460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 6, y: -0.1, z: 6}
+  m_LocalPosition: {x: 6, y: -0.37, z: 6}
   m_LocalScale: {x: 12, y: 0.1, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3224,21 +3224,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   moveCount: 0
-  moveCount_Max: 10
-  sGrade: 3
-  aGrade: 4
-  bGrade: 5
+  moveCount_Max: 7
+  sGrade: 4
+  aGrade: 5
+  bGrade: 6
   stageName: stage05
   endPosition: {x: 5, y: 1, z: 13}
   trap:
   - {x: 9, y: 1, z: 13}
   - {x: 11, y: 1, z: 13}
-  pausePanel: {fileID: 0}
-  clearPanel: {fileID: 0}
-  FinalGrade: {fileID: 0}
-  gameOverPanel: {fileID: 0}
+  clearPanel: {fileID: 1612327594}
+  FinalGrade: {fileID: 1705454013}
+  gameOverPanel: {fileID: 878697571}
   character: {fileID: 124181112}
-  countController: {fileID: 1012038929}
+  countController: {fileID: 271037846}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,7 +3604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &930359762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3850,52 +3849,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1012038928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1012038930}
-  - component: {fileID: 1012038929}
-  m_Layer: 0
-  m_Name: TMPController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1012038929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012038928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682048f53ad2fec48b9268b7ff423aa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CountController
-  countTMP: {fileID: 0}
-  gradeTMP: {fileID: 0}
---- !u!4 &1012038930
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012038928}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 552.8316, y: 505.10144, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029683750
 GameObject:
   m_ObjectHideFlags: 0
@@ -4527,7 +4480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1407899788
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4743,7 +4696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1440128585
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4821,7 +4774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496424373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4973,7 +4926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1611439032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5330,7 +5283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2134827606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5403,7 +5356,6 @@ SceneRoots:
   - {fileID: 914386223}
   - {fileID: 899382881}
   - {fileID: 560033987}
-  - {fileID: 1012038930}
   - {fileID: 293015116}
   - {fileID: 1073769644}
   - {fileID: 736043730}

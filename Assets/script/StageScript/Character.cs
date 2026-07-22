@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
 
     public GameManager gameManager;
     public GameObject characterPrefabs;
+    private bool isCharacterTouch = false;
 
     public bool canMove = true;
 
@@ -110,111 +111,104 @@ public class Character : MonoBehaviour
         {
             gameManager.GameOver();
         }
-        
-        
+
+
     }
 
     private int[] CalVector(Vector2 end_start)
-{
-    float angle = Mathf.Atan2(end_start.y, end_start.x) * Mathf.Rad2Deg;
-
-    int[] returnArr = new int[3];
-    float[][] rangeData = AngleData.GetRangeData();
-
-    for (int i = 0; i < 6; i++)
     {
-        float start = rangeData[i][0];
-        float end = rangeData[i][1];
+        float angle = Mathf.Atan2(end_start.y, end_start.x) * Mathf.Rad2Deg;
 
-        if (start == 0 && end == 0)
-            continue;
+        int[] returnArr = new int[3];
+        float[][] rangeData = AngleData.GetRangeData();
 
-        if (start > 180) start -= 360;
-        if (end > 180) end -= 360;
-
-        bool inRange;
-
-        if (start <= end)
+        for (int i = 0; i < 6; i++)
         {
-            inRange = angle >= start && angle < end;
-        }
-        else
-        {
-            inRange = angle >= start || angle < end;
+            float start = rangeData[i][0];
+            float end = rangeData[i][1];
+
+            if (start == 0 && end == 0)
+                continue;
+
+            if (start > 180) start -= 360;
+            if (end > 180) end -= 360;
+
+            bool inRange;
+
+            if (start <= end)
+            {
+                inRange = angle >= start && angle < end;
+            }
+            else
+            {
+                inRange = angle >= start || angle < end;
+            }
+
+            if (!inRange)
+                continue;
+
+            switch (i)
+            {
+                case 0: returnArr[0] = 1; break;   // +X
+                case 1: returnArr[0] = -1; break;  // -X
+                case 2: returnArr[1] = 1; break;   // +Y
+                case 3: returnArr[1] = -1; break;  // -Y
+                case 4: returnArr[2] = 1; break;   // +Z
+                case 5: returnArr[2] = -1; break;  // -Z
+            }
+
+            break;
         }
 
-        if (!inRange)
-            continue;
-
-        switch (i)
-        {
-            case 0: returnArr[0] = 1; break;   // +X
-            case 1: returnArr[0] = -1; break;  // -X
-            case 2: returnArr[1] = 1; break;   // +Y
-            case 3: returnArr[1] = -1; break;  // -Y
-            case 4: returnArr[2] = 1; break;   // +Z
-            case 5: returnArr[2] = -1; break;  // -Z
-        }
-
-        break;
+        return returnArr;
     }
-
-    return returnArr;
-}
     void Update()
     {
         if (!canMove) return;
 
         bool began = false;
-        bool hold = false;
         bool ended = false;
 
         Vector2 position = Vector2.zero;
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             position = touch.position;
-            if (position.y > 500)
-            {
-                began = touch.phase == TouchPhase.Began;
-                hold = touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;
-                ended = touch.phase == TouchPhase.Ended;
-            }
+
+            began = touch.phase == TouchPhase.Began;
+            ended = touch.phase == TouchPhase.Ended;
         }
         else
         {
             position = Input.mousePosition;
-            if (position.y > 500)
-            {
-                began = Input.GetMouseButtonDown(0);
-                hold = Input.GetMouseButton(0);
-                ended = Input.GetMouseButtonUp(0);
-            }
+
+            began = Input.GetMouseButtonDown(0);
+            ended = Input.GetMouseButtonUp(0);
         }
 
         if (began)
-            touchStart = position;
-
-        if (hold)
         {
-            float distance = Vector2.Distance(touchStart, position);
-            if (distance > 100f)
+            if (position.y > 500)
             {
+                isCharacterTouch = true;
+                touchStart = position;
             }
             else
             {
-                characterPrefabs.SetActive(false);
+                isCharacterTouch = false;
             }
         }
-
-        if (ended)
+        if (ended && isCharacterTouch)
         {
             float distance = Vector2.Distance(touchStart, position);
-            if (distance > 50f)
+
+            if (distance > 35f)
             {
-                touchEnd = position;
-                CharacterMove(CalVector(touchEnd - touchStart));
+                CharacterMove(CalVector(position - touchStart));
             }
+
+            isCharacterTouch = false;
         }
     }
 
